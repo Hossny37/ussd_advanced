@@ -83,7 +83,9 @@ class UssdAdvancedPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Basic
           }else{
             reply.reply(null)
           }
-        } catch (e: Exception){}
+        } catch (e: Exception){
+          val a = e;
+        }
 
       }
     }
@@ -226,13 +228,13 @@ class UssdAdvancedPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Basic
           ) {
             when (failureCode) {
               TelephonyManager.USSD_ERROR_SERVICE_UNAVAIL -> {
-                res.completeExceptionally(RequestExecutionException("USSD_ERROR_SERVICE_UNAVAIL"))
+                res.complete("USSD_ERROR_SERVICE_UNAVAIL")
               }
               TelephonyManager.USSD_RETURN_FAILURE -> {
-                res.completeExceptionally(RequestExecutionException("USSD_RETURN_FAILURE"))
+                res.complete("USSD_RETURN_FAILURE")
               }
               else -> {
-                res.completeExceptionally(RequestExecutionException("unknown error"))
+                res.complete("unknown error")
               }
             }
           }

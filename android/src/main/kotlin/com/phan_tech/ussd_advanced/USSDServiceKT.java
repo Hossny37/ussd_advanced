@@ -66,7 +66,8 @@ public class USSDServiceKT extends AccessibilityService {
 //                Timber.d("No inputText found & closing USSD process");
                 clickOnButton(event, 0);
                 ussd.stopRunning();
-                USSDController.callbackInvoke.over(response != null ? response : "");
+                ussd.getCallbackMessage().invoke(event);
+                // USSDController.callbackInvoke.over(response != null ? response : "");
             } else {
                 // sent option 1
                 if (ussd.getSendType() == true)

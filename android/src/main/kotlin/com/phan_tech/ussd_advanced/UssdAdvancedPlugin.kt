@@ -75,6 +75,7 @@ class UssdAdvancedPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Basic
 
   override fun onMessage(message: String?, reply: BasicMessageChannel.Reply<String?>) {
     if(message != null){
+
       USSDController.send2(message, event!!){
         event = AccessibilityEvent.obtain(it)
         try {
